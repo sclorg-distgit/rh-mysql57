@@ -20,7 +20,7 @@
 Summary: Package that installs %{scl}
 Name: %{scl}
 Version: 2.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2+
 Group: Applications/File
 Source0: README
@@ -162,6 +162,9 @@ restorecon -R %{_localstatedir} >/dev/null 2>&1 || :
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Wed Jul 20 2016 Honza Horak <hhorak@redhat.com> - 2.3-2
+- Rename the meta package spec file
+
 * Fri Jul 15 2016 Honza Horak <hhorak@redhat.com> - 2.3-1
 - Initial creation of MySQL 5.7 meta package
 
