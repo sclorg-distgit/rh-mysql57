@@ -20,7 +20,7 @@
 Summary: Package that installs %{scl}
 Name: %{scl}
 Version: 2.3
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2+
 Group: Applications/File
 Source0: README
@@ -112,7 +112,7 @@ export JAVACONFDIRS="%{_sysconfdir}/java:\${JAVACONFDIRS:-/etc/java}"
 # For XMvn to locate its configuration file(s)
 export XDG_CONFIG_DIRS="%{_sysconfdir}/xdg:\${XDG_CONFIG_DIRS:-/etc/xdg}"
 # For systemtap
-export XDG_DATA_DIRS="%{_datadir}\${XDG_DATA_DIRS:+:\${XDG_DATA_DIRS}}"
+export XDG_DATA_DIRS="%{_datadir}:\${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 # For pkg-config
 export PKG_CONFIG_PATH="%{_libdir}/pkgconfig\${PKG_CONFIG_PATH:+:\${PKG_CONFIG_PATH}}"
 EOF
@@ -162,6 +162,10 @@ restorecon -R %{_localstatedir} >/dev/null 2>&1 || :
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Oct 25 2016 Jakub Dorňák <jdornak@redhat.com> - 2.3-3
+- Fixed default value of XDG_DATA_DIRS
+  Resolves: #1382689
+
 * Wed Jul 20 2016 Honza Horak <hhorak@redhat.com> - 2.3-2
 - Rename the meta package spec file
 
